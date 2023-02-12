@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:movie_app/view/widget/detail_page.dart';
 
 import '../provider/search_provider.dart';
 
@@ -67,19 +69,25 @@ class SearchPage extends ConsumerWidget {
                                     crossAxisCount: 2),
                             itemBuilder: (context, index) {
                               final movie = searchData.movies[index];
-                              return ClipRRect(
-                                borderRadius: BorderRadius.circular(6),
-                                child: CachedNetworkImage(
-                                    errorWidget: (c, s, d) =>
-                                        Image.asset('images/no_image.png'),
-                                    placeholder: (c, s) => Center(
-                                            child: SpinKitThreeInOut(
-                                          size: 15,
-                                          color: Colors.white,
-                                        )),
-                                    fit: BoxFit.fitHeight,
-                                    imageUrl:
-                                        'https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}'),
+                              return InkWell(
+                                onTap: () {
+                                  Get.to(()=> DetailPage(movie), transition: Transition.downToUp);
+                                  // print(movie);
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(6),
+                                  child: CachedNetworkImage(
+                                      errorWidget: (c, s, d) =>
+                                          Image.asset('images/no_image.png'),
+                                      placeholder: (c, s) => const Center(
+                                              child: SpinKitThreeInOut(
+                                            size: 15,
+                                            color: Colors.white,
+                                          )),
+                                      fit: BoxFit.fitHeight,
+                                      imageUrl:
+                                          'https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}'),
+                                ),
                               );
                             }),
                       ),

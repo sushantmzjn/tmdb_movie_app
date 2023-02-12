@@ -44,6 +44,7 @@ dependencies:
   flutter_offline: ^2.1.0
   flutter_spinkit: any
   flutter_native_splash: any
+  pod_player: ^0.1.0
 
 flutter_native_splash:
   color: "#000000"
