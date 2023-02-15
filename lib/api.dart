@@ -5,4 +5,5 @@ class Api {
   static const upcomingMovie = '$baseUrl/3/movie/upcoming';
   static const nowPlaying = '$baseUrl/3/movie/now_playing';
   static const searchMovie = '$baseUrl/3/search/movie';
+
 }

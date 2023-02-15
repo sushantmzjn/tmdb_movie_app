@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:movie_app/view/search.dart';
+import 'package:movie_app/view/widget/connection.dart';
 import 'package:movie_app/view/widget/tab_bar.dart';
 
 enum CategoryType { popular, top_rated, upcomming, now_playing }
@@ -60,10 +61,10 @@ class Home extends StatelessWidget {
                   child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  CategoryTabBar(CategoryType.now_playing, '1'),
-                  CategoryTabBar(CategoryType.popular, '2'),
-                  CategoryTabBar(CategoryType.top_rated, '3'),
-                  CategoryTabBar(CategoryType.upcomming, '4'),
+                  ConnectionWidget(widget: CategoryTabBar(CategoryType.now_playing, '1')),
+                  ConnectionWidget(widget: CategoryTabBar(CategoryType.popular, '2')),
+                  ConnectionWidget(widget: CategoryTabBar(CategoryType.top_rated, '3')),
+                  ConnectionWidget(widget: CategoryTabBar(CategoryType.upcomming, '4')),
                 ],
               ))
             ],

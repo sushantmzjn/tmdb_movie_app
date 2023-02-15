@@ -46,10 +46,11 @@ dependencies:
   flutter_native_splash: any
   pod_player: ^0.1.0
 
+
 flutter_native_splash:
-  color: "#000000"
+  color: "#121212"
   image: images/movie.png
-  color_dark: "#121212"
+  color_dark: "#ffffff"
 
 dev_dependencies:
   flutter_test:

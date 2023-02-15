@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movie_app/api_exception.dart';
 
 import 'package:movie_app/model/movie.dart';
 import 'package:dartz/dartz.dart';
@@ -32,12 +33,18 @@ class MovieService {
       final response = await dio.get(Api.searchMovie,
           queryParameters: {'api_key': apiKey, 'query': searchText});
 
-      final data = (response.data['results'] as List)
-          .map((e) => Movie.fromJson(e))
-          .toList();
-      return Right(data);
+      if ((response.data['results'] as List).isEmpty) {
+        return left('result not found');
+      } else {
+        final data = (response.data['results'] as List)
+            .map((e) => Movie.fromJson(e))
+            .toList();
+        return Right(data);
+      }
     } on DioError catch (err) {
-      return Left(err.message);
+      return Left(DioException.getDioError(err));
     }
   }
+
+
 }

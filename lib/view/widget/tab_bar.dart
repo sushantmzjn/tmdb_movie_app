@@ -63,6 +63,7 @@ class CategoryTabBar extends ConsumerWidget {
                   crossAxisCount: 3),
               itemBuilder: (context, index) {
                 final movie = movieData.movies[index];
+                // print(movieData.movies[index].id);
                 return InkWell(
                   onTap: (){
                     Get.to(() => DetailPage(movie), transition:Transition.downToUp );

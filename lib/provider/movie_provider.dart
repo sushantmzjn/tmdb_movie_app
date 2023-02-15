@@ -120,3 +120,25 @@ class NowPlayingMovies extends StateNotifier<MovieState> {
     getMovieByCategory();
   }
 }
+
+//recommend
+// final recommendedProvider = StateNotifierProvider<RecommendedMovies, MovieState>(
+//         (ref) => RecommendedMovies(defaultState));
+//
+//
+// class RecommendedMovies extends StateNotifier<MovieState>{
+//   RecommendedMovies(super.state){
+//     getMovieByCategory();
+//   }
+//
+//   Future<void> getMovieByCategory() async{
+//     state = state.copyWith(isLoad: true, isError: false);
+//     final response =  await MovieService.getMovieByCategory(api: Api.recommendMovie, page: 1);
+//     response.fold((l) {
+//       state = state.copyWith(isLoad: false, isError: true, errorMessage: l);
+//     }, (r) {
+//       state = state.copyWith(isLoad: false, isError: false, movies: r);
+//     });
+//   }
+//
+// }
